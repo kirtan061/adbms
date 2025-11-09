@@ -1,0 +1,34 @@
+---->Creating a function to calculate factorial
+ CREATE OR REPLACE FUNCTION factorial (n IN NUMBER) 
+RETURN NUMBER 
+IS
+ result NUMBER := 1;
+ BEGIN
+ -- Loop to calculate factorial and display intermediate steps
+ FOR i IN 1..n LOOP
+ result := result * i;
+ -- Displaying each step in tabular format 
+DBMS_OUTPUT.PUT_LINE('Step ' || i || ': ' || i || ' x ‘ || (result / i) || ' = ' || result);
+ END LOOP; 
+RETURN result;
+ END;
+ /
+
+
+
+----> Using a fixed value for num (e.g., num = 5)
+ DECLARE
+ num NUMBER := 5; -- Hardcoded value
+ fact NUMBER;
+ BEGIN
+ -- Displaying the header for the table
+ DBMS_OUTPUT.PUT_LINE('-----------------------------------------');
+ DBMS_OUTPUT.PUT_LINE('Step | Multiplier | Previous Result | Current Result'); 
+ DBMS_OUTPUT.PUT_LINE('-----------------------------------------');
+ -- Calling the factorial function
+ fact := factorial(num); 
+--Displaying the factorial result
+ DBMS_OUTPUT.PUT_LINE('-----------------------------------------');
+ DBMS_OUTPUT.PUT_LINE('The factorial of ' || num || ' is: ' || fact);
+ END;
+ /
