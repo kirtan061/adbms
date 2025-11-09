@@ -1,0 +1,31 @@
+DECLARE
+    num           NUMBER;        -- Current number to check
+    temp_num      NUMBER;        -- Copy of the number for manipulation
+    original_num  NUMBER;        -- Original number for comparison
+    sum           NUMBER := 0;   -- Sum of powers of digits
+    remainder     NUMBER;
+    num_digits    NUMBER;
+BEGIN
+    -- Loop through numbers from 1 to 999
+    FOR num IN 1..999 LOOP
+        original_num := num;
+        temp_num := num;
+        sum := 0;
+
+        -- Calculate number of digits
+        num_digits := LENGTH(TO_CHAR(num));
+
+        -- Calculate the sum of each digit raised to the power of num_digits
+        WHILE temp_num > 0 LOOP
+            remainder := MOD(temp_num, 10);
+            sum := sum + POWER(remainder, num_digits);
+            temp_num := TRUNC(temp_num / 10);
+        END LOOP;
+
+        -- Check if the number is an Armstrong number
+        IF sum = original_num THEN
+            DBMS_OUTPUT.PUT_LINE(original_num || ' is an Armstrong number.');
+        END IF;
+    END LOOP;
+END;
+/
