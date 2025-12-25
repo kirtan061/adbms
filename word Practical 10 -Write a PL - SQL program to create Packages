@@ -1,0 +1,180 @@
+/*Example-1: A stored procedure to print out a “Hello PU Students!” via
+DBMS_OUTPUT.*/
+--STEP-1 CREATE PROCEDURE
+CREATE OR REPLACE PROCEDURE
+procPrintHelloWorld IS BEGIN
+DBMS_OUTPUT.PUT_LINE('Hello PU
+Students!'); END;
+--STEP-2 How to call procedure
+BEGIN
+procPrintHelloWorld();
+END;
+
+--Example-2: A stored procedure to print out message using passing parameter
+--STEP-1 CREATE PROCEDURE
+
+CREATE OR REPLACE PROCEDURE
+procOneINParameter(param1 IN VARCHAR2) IS
+BEGIN
+
+DBMS_OUTPUT.PUT_LINE('Hello !' ||
+param1);
+END;
+--STEP-2 How to call procedure 
+BEGIN
+
+procOneINParameter(' PU Students............');
+
+END;
+
+--Example-3: Function to Get given number square root.
+
+--STEP-1 CREATE FUNCTION
+CREATE OR REPLACE FUNCTION
+square_number (p_num IN NUMBER)RETURN NUMBER
+IS
+BEGIN
+RETURN p_num * p_num;
+END square_number;
+
+--STEP-2 How to call FUNCTION
+SELECT square_number(5) FROM dual; 
+
+--Example-4: Function to Get Full Name 
+
+--STEP-1 CREATE FUNCTION
+CREATE OR REPLACE FUNCTION
+get_full_name (
+p_first_name IN VARCHAR2, p_last_name IN VARCHAR2
+)
+RETURN VARCHAR2 
+IS
+BEGIN
+RETURN p_first_name || ' ' || p_last_name;
+END get_full_name;
+
+--STEP-2 How to call FUNCTION
+
+SELECT get_full_name('Sweta',’Jethava’) AS full_name FROM dual;
+
+
+--EMPLOYEE Table Creation 
+CREATE TABLE employee (
+emp_id NUMBER PRIMARY KEY,
+emp_name VARCHAR2(50), department VARCHAR2(30), salary NUMBER(10,2)
+);
+
+--Insert Sample Data into EMPLOYEE Table:
+INSERT INTO employee VALUES (101, 'Ravi Sharma', 'HR', 25000);
+INSERT INTO employee VALUES (102, 'Asha Mehta', 'IT', 45000);
+INSERT INTO employee VALUES (103, 'John Dsouza', 'Finance', 15000);
+INSERT INTO employee VALUES (104, 'Neha Patel', 'IT', 55000);
+ 
+INSERT INTO employee VALUES (105, 'Karan Joshi', 'Marketing', 9500);
+
+Select * from employee;
+
+
+/*EXAMPLE-5: FUNCTION: Calculate
+Annual Salary. [Hint: To create a function that returns annual salary of an employee based on employee ID.][P-8]*/
+--STEP-1 CREATE FUNCTION
+CREATE OR REPLACE FUNCTION
+get_annual_salary(p_emp_id IN NUMBER)
+RETURN NUMBER IS
+v_salary NUMBER; 
+BEGIN
+SELECT salary INTO v_salary FROM employee WHERE emp_id = p_emp_id;
+RETURN v_salary * 12; 
+END;
+ 
+
+--STEP-2 How to call FUNCTION
+
+DECLARE
+result NUMBER; BEGIN
+result := get_annual_salary(102);
+
+DBMS_OUTPUT.PUT_LINE('Annual
+Salary: ' || result);
+END;
+
+
+
+/*EXAMPLE-6: PROCEDURE: Update
+Salary by Percentage. [Hint: Write a
+procedure to increase salary by a given percentage.][P-9]
+*/
+
+--STEP-1 CREATE PROCEDURE
+
+CREATE OR REPLACE PROCEDURE
+update_salary (
+p_emp_id IN NUMBER,
+p_percent IN NUMBER
+) IS
+ 
+BEGIN
+UPDATE employee
+SET salary = salary + (salary * p_percent / 100)
+WHERE emp_id = p_emp_id;
+
+DBMS_OUTPUT.PUT_LINE('Salary
+updated successfully.'); 
+END;
+SELECT * FROM EMPLOYEE
+
+--STEP-2 How to call PROCEDURE
+BEGIN
+update_salary(105, 10); -- 10% raise
+for emp_id 105
+END;
+SELECT * FROM EMPLOYEE
+
+
+/*EXAMPLE-7: PACKAGE program :
+Create a package to hold related employee operations (function + procedure).[P-10]*/
+
+--STEP-1 Create Package Specification with function and procedure
+
+CREATE OR REPLACE PACKAGE emp_package IS
+FUNCTION get_annual_salary(p_emp_id IN NUMBER) RETURN NUMBER;
+PROCEDURE update_salary(p_emp_id IN NUMBER, p_percent IN NUMBER);
+END emp_package;
+
+--STEP-2 Create Package body
+CREATE OR REPLACE PACKAGE BODY
+emp_package IS
+
+FUNCTION get_annual_salary(p_emp_id IN NUMBER)
+RETURN NUMBER IS
+v_salary NUMBER;
+BEGIN
+SELECT salary INTO v_salary FROM employee WHERE emp_id = p_emp_id;
+RETURN v_salary * 12;
+END;
+
+PROCEDURE update_salary(p_emp_id IN NUMBER, p_percent IN NUMBER) IS
+BEGIN
+UPDATE employee
+SET salary = salary + (salary * p_percent / 100) WHERE emp_id = p_emp_id;
+
+DBMS_OUTPUT.PUT_LINE('Salary updated through package.');
+END;
+
+END emp_package;
+
+--STEP-3 Test Package Functions and Procedures
+-- Function 
+DECLARE
+annual NUMBER; BEGIN
+annual := emp_package.get_annual_salary(103);
+DBMS_OUTPUT.PUT_LINE('Annual Salary: ' || annual);
+END;
+
+
+
+-- Procedure
+BEGIN
+emp_package.update_salary(103, 5);
+END;
+
