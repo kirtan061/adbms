@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtNet - Advanced Art Network by Max</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>ArtNet</h1>
+                <span class="tagline">by Max</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#artists">Artists</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Welcome to ArtNet</h2>
+                <p class="hero-subtitle">Discover and Connect with Exceptional Art</p>
+                <button class="cta-button">Explore Gallery</button>
+            </div>
+            <div class="hero-animation">
+                <canvas id="artCanvas"></canvas>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2 class="section-title">Featured Artworks</h2>
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="digital">Digital</button>
+                    <button class="filter-btn" data-filter="traditional">Traditional</button>
+                    <button class="filter-btn" data-filter="abstract">Abstract</button>
+                    <button class="filter-btn" data-filter="contemporary">Contemporary</button>
+                </div>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Gallery items will be dynamically generated -->
+                </div>
+            </div>
+        </section>
+
+        <section id="artists" class="artists">
+            <div class="container">
+                <h2 class="section-title">Featured Artists</h2>
+                <div class="artists-grid">
+                    <div class="artist-card">
+                        <div class="artist-avatar">MA</div>
+                        <h3>Max Adavns</h3>
+                        <p class="artist-role">Founder & Lead Artist</p>
+                        <p class="artist-bio">Pioneering digital art through innovative network technologies.</p>
+                    </div>
+                    <div class="artist-card">
+                        <div class="artist-avatar">JD</div>
+                        <h3>Jane Doe</h3>
+                        <p class="artist-role">Digital Artist</p>
+                        <p class="artist-bio">Exploring the intersection of code and creativity.</p>
+                    </div>
+                    <div class="artist-card">
+                        <div class="artist-avatar">AS</div>
+                        <h3>Alex Smith</h3>
+                        <p class="artist-role">Abstract Painter</p>
+                        <p class="artist-bio">Creating bold expressions through color and form.</p>
+                    </div>
+                    <div class="artist-card">
+                        <div class="artist-avatar">LW</div>
+                        <h3>Luna White</h3>
+                        <p class="artist-role">Contemporary Artist</p>
+                        <p class="artist-bio">Bridging traditional techniques with modern themes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About ArtNet</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>ArtNet is a revolutionary platform designed by Max Adavns to connect artists, collectors, and art enthusiasts in a dynamic digital space.</p>
+                        <p>Our mission is to democratize art appreciation and make exceptional artwork accessible to everyone, everywhere.</p>
+                        <ul class="features-list">
+                            <li>Curated collection of diverse artworks</li>
+                            <li>Advanced networking for artists and collectors</li>
+                            <li>Interactive gallery experiences</li>
+                            <li>Real-time art market insights</li>
+                        </ul>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <h3 class="stat-number" data-target="500">0</h3>
+                            <p>Artworks</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="stat-number" data-target="150">0</h3>
+                            <p>Artists</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="stat-number" data-target="1200">0</h3>
+                            <p>Members</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ArtNet</h3>
+                    <p>Advanced Art Network by Max Adavns</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#artists">Artists</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ArtNet. Created by Max Adavns. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
