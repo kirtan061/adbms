@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Max Advans | Artnet</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #050505;
+      --accent: #f4a261;
+      --muted: #9b9b9b;
+      --text: #f7f7f7;
+      --card: #121212;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, rgba(244, 162, 97, 0.15), transparent 45%),
+                  radial-gradient(circle at bottom, rgba(168, 218, 220, 0.12), transparent 40%),
+                  var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 5rem 10vw 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      letter-spacing: -1px;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      font-weight: 600;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .grid {
+      padding: 0 10vw 5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(244, 162, 97, 0.15);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .showcase {
+      padding: 0 10vw 5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .showcase figure {
+      margin: 0;
+      background: var(--card);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      min-height: 360px;
+    }
+
+    .showcase figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+      mix-blend-mode: screen;
+    }
+
+    .showcase figcaption {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 1rem;
+      padding: 1rem;
+      font-size: 0.95rem;
+      backdrop-filter: blur(10px);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 2rem 10vw 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="tag">Max Advans x Artnet</div>
+      <h1>Curating bold intersections of art + technology</h1>
+      <p>Max Advans partners with Artnet to surface future-facing artists redefining narrative, texture, and light. Each commission pairs physical craft with immersive digital worlds.</p>
+      <div style="margin-top:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <a class="cta" href="#collections">View collections →</a>
+        <a class="cta" href="mailto:studio@maxadvans.art">Connect with the studio ↗</a>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Upcoming drop: Lumen Archive</h3>
+      <p>April 18 · Berlin · Multi-modal installation exploring the geometry of light and identity.</p>
+      <span class="tag" style="align-self:flex-start;">Limited 50 pieces</span>
+    </div>
+  </header>
+
+  <section class="grid" id="collections">
+    <article class="card">
+      <h3>Resonant Cities</h3>
+      <p>An audiovisual essay mapping sonic footprints across global architecture with responsive projection.</p>
+      <span class="tag">Immersive environments</span>
+    </article>
+    <article class="card">
+      <h3>Chromatic Echoes</h3>
+      <p>Layered pigment sculptures paired with generative counterparts minted on-chain for provenance.</p>
+      <span class="tag">Phygital sculpture</span>
+    </article>
+    <article class="card">
+      <h3>Solar Manuscripts</h3>
+      <p>Speculative typography extracted from heliographic processes, archived as interactive narratives.</p>
+      <span class="tag">Narrative systems</span>
+    </article>
+  </section>
+
+  <section class="showcase">
+    <figure>
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80" alt="Light sculpture" loading="lazy">
+      <figcaption>Max Advans and Artnet present architectural light studies inside repurposed industrial spaces.</figcaption>
+    </figure>
+    <figure>
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80" alt="Digital art" loading="lazy">
+      <figcaption>Prototype portals blend tactile canvases with adaptive projections responding to audience motion.</figcaption>
+    </figure>
+  </section>
+
+  <footer>
+    <span>© 2024 Max Advans · Artnet Studio Program</span>
+    <span>Follow the process on <a href="https://www.artnet.com/">Artnet</a> · <a href="https://www.instagram.com/">Instagram</a></span>
+  </footer>
+</body>
+</html>
